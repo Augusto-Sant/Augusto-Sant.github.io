@@ -2,19 +2,18 @@
 /* UTILS */
 .jumbotron {
   background-color: #001219;
-  padding: 2rem 1rem;
-  margin: 2rem;
+  padding: 2rem;
   border-radius: 12px;
-  font-size: large;
+  margin: 15px;
   opacity: 0.8;
   filter:(opacity=50);
 }
 
+
 .jumbotron-no-pad {
   background-color: #001219;
-  margin: 2rem;
+  margin: 4px;
   border-radius: 12px;
-  font-size: large;
   opacity: 0.8;
   filter:(opacity=50);
 }
@@ -22,19 +21,17 @@
 .jumbo3{
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  padding: 10px;
   background-color: #415a77;
-  padding: 2rem 1rem;
-  font-size: large;
   opacity: 0.8;
   filter:(opacity=50);
 }
 
 .jumbo2{
   background-color: #415a77;
-  padding: 2rem;
-  margin: 2rem;
   border-radius: 12px;
-  font-size: large;
+  padding: 10px;
+  margin: 30px;
   opacity: 0.8;
   filter:(opacity=50);
 }
@@ -42,10 +39,8 @@
 .project{
   background-color: #2d5b90;
   color: white;
-  padding: 2rem 1rem;
   margin: 2rem;
   border-radius: 12px;
-  font-size: large;
   transition: 0.5s ease-in-out;
   filter: brightness(100%);
 }
@@ -53,6 +48,10 @@
 .project_content{
   background-color: #001219;
   border-radius: 12px;
+  height: fit-content;
+  width: fit-content;
+  height: auto;
+  width: auto;
   border: solid #001219 5px;
   opacity: 0.9;
   filter:(opacity=50);
@@ -96,6 +95,7 @@
 
 body {
   color: white;
+  font-size: medium;
   font-family: 'Poppins', sans-serif;
   background-size: 400% 400%;
   animation: gradient 500s ease infinite;
@@ -111,5 +111,14 @@ body {
   }
   100% {
       background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .jumbotron {
+    margin: 1px;
+  }
+  body{
+   font-size: smaller;
   }
 }
