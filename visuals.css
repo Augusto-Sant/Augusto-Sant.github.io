@@ -9,6 +9,18 @@
   filter:(opacity=50);
 }
 
+.hiddenElement{
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.showElement{
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateX(0);
+}
 
 .jumbotron-no-pad {
   background-color: #001219;
