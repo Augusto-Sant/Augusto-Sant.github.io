@@ -9,14 +9,16 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll(".hiddenElement");
 hiddenElements.forEach((el) => observer.observe(el));
 
-
-$(document).keyup(function (e) {
-    if (e.keyCode == 13) {
-        if (secret.value == "aperture")
-            // As above, so below; as within, so without.
-            // To those who earnestly seek, the gates of wisdom shall open wide.
-            window.location.replace('message.html');
-        else 
+document.addEventListener('keyup', function(e) {
+    var secret = document.getElementById('secret');
+    // As above, so below; as within, so without.
+    // To those who earnestly seek, the gates of wisdom shall open wide.
+    if (e.keyCode === 13) {
+        if (secret.value === "aperture") {
             secret.value = "";
+            secret.value = "Thanks :)";
+        } else {
+            secret.value = "";
+        }
     }
 });
