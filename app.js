@@ -8,3 +8,15 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll(".hiddenElement");
 hiddenElements.forEach((el) => observer.observe(el));
+
+
+$(document).keyup(function (e) {
+    if (e.keyCode == 13) {
+        if (secret.value == "aperture")
+            // As above, so below; as within, so without.
+            // To those who earnestly seek, the gates of wisdom shall open wide.
+            window.location.replace('message.html');
+        else 
+            secret.value = "";
+    }
+});
