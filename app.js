@@ -80,8 +80,6 @@
       const fx = new TextScramble(el);
       el.dataset.original = original;
       setTimeout(() => fx.setText(original), delay);
-
-      el.addEventListener('mouseenter', () => fx.setText(el.dataset.original));
    });
 
    /* ---- on-view scramble (IntersectionObserver) ---- */
@@ -96,7 +94,6 @@
             el.dataset.original = original;
             const fx = new TextScramble(el);
             fx.setText(original);
-            el.addEventListener('mouseenter', () => fx.setText(el.dataset.original));
          });
       },
       { threshold: 0.4 }
