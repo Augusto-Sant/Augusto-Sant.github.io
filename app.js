@@ -1,11 +1,11 @@
 /* ============================================================
-   jose_dev_  — interactions
+   jose_dev_  - interactions
    ============================================================ */
 
 (function () {
    'use strict';
 
-   const SCRAMBLE_CHARS = '!<>-_\\/[]{}—=+*^?#________%&$@';
+   const SCRAMBLE_CHARS = '!<>-_\\/[]{}=+*^?#________%&$@';
 
    class TextScramble {
       constructor(el) {
@@ -113,13 +113,16 @@
    );
    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-   /* ---- header border on scroll ---- */
+   /* ---- header border via sentinel (no scroll listener) ---- */
    const header = document.querySelector('.site-header');
-   const onScroll = () => {
-      header.classList.toggle('scrolled', window.scrollY > 10);
-   };
-   onScroll();
-   window.addEventListener('scroll', onScroll, { passive: true });
+   const sentinel = document.createElement('div');
+   sentinel.setAttribute('aria-hidden', 'true');
+   sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none;';
+   document.body.prepend(sentinel);
+   new IntersectionObserver(
+      ([entry]) => header.classList.toggle('scrolled', !entry.isIntersecting),
+      { threshold: 0 }
+   ).observe(sentinel);
 
    /* ---- active nav based on scroll position ---- */
    const navLinks = document.querySelectorAll('.nav-link');
@@ -141,12 +144,45 @@
    );
    sections.forEach(({ section }) => section && navObserver.observe(section));
 
+   /* ---- chapter focus: keep only the most-visible section lit ---- */
+   const chapters = Array.from(document.querySelectorAll('main > section'));
+   if (chapters.length) {
+      const ratios = new Map(chapters.map((c) => [c, 0]));
+      let activeChapter = null;
+
+      function updateFocus() {
+         let best = null;
+         let bestRatio = 0;
+         ratios.forEach((ratio, el) => {
+            if (ratio > bestRatio) {
+               bestRatio = ratio;
+               best = el;
+            }
+         });
+         // keep the current one if nothing is meaningfully in view (e.g. between snaps)
+         if (!best) best = activeChapter || chapters[0];
+         if (best === activeChapter) return;
+         activeChapter = best;
+         chapters.forEach((c) => c.classList.toggle('dimmed', c !== best));
+      }
+
+      const focusObserver = new IntersectionObserver(
+         (entries) => {
+            entries.forEach((entry) => ratios.set(entry.target, entry.intersectionRatio));
+            updateFocus();
+         },
+         { threshold: [0, 0.15, 0.3, 0.5, 0.7, 0.9, 1] }
+      );
+      chapters.forEach((c) => focusObserver.observe(c));
+   }
+
    /* ---- ASCII wave art (canvas-style ascii density map) ---- */
    const asciiEl = document.getElementById('asciiArt');
    if (asciiEl) {
       const COLS = 80;
       const ROWS = 32;
       const CHARSET = ' .·:-+*=%@#';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       function render(t) {
          let out = '';
@@ -172,11 +208,71 @@
          asciiEl.textContent = out;
       }
 
-      let start = performance.now();
-      function loop(now) {
-         render(now - start);
+      if (reduceMotion) {
+         render(0);
+      } else {
+         const start = performance.now();
+         function loop(now) {
+            render(now - start);
+            requestAnimationFrame(loop);
+         }
          requestAnimationFrame(loop);
       }
-      requestAnimationFrame(loop);
+   }
+
+   /* ---- full-page subtle ascii background ---- */
+   const bgEl = document.getElementById('asciiBg');
+   if (bgEl) {
+      const CHARS = ' ....::-=+*';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let cols = 0;
+      let rows = 0;
+
+      function measure() {
+         // derived from the .ascii-bg type metrics in the stylesheet
+         const cw = 8.8;
+         const ch = 15;
+         cols = Math.ceil(window.innerWidth / cw) + 1;
+         rows = Math.ceil(window.innerHeight / ch) + 1;
+      }
+
+      function paint(t) {
+         let out = '';
+         for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+               const v =
+                  Math.sin(x * 0.18 + t * 0.00018) +
+                  Math.sin(y * 0.26 - t * 0.00012) +
+                  Math.sin((x + y) * 0.09 + t * 0.0001);
+               const idx = Math.floor(((v + 3) / 6) * (CHARS.length - 1));
+               out += CHARS[idx] || ' ';
+            }
+            out += '\n';
+         }
+         bgEl.textContent = out;
+      }
+
+      measure();
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+         clearTimeout(resizeTimer);
+         resizeTimer = setTimeout(measure, 150);
+      });
+
+      if (reduceMotion) {
+         paint(0);
+      } else {
+         const startBg = performance.now();
+         // throttle to ~12fps — background motion stays subtle and cheap
+         let last = 0;
+         function bgLoop(now) {
+            if (now - last > 80) {
+               paint(now - startBg);
+               last = now;
+            }
+            requestAnimationFrame(bgLoop);
+         }
+         requestAnimationFrame(bgLoop);
+      }
    }
 })();

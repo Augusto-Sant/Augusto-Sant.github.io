@@ -8,13 +8,13 @@
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
    <link rel="stylesheet" href="visuals.css">
    <script defer src="app.js"></script>
 </head>
 <body>
-   <div class="grid-bg"></div>
+   <pre class="ascii-bg" id="asciiBg" aria-hidden="true"></pre>
 
    <header class="site-header">
       <a href="#top" class="logo">&gt; jose_dev_<span class="caret">&block;</span></a>
@@ -49,7 +49,6 @@
       <section id="experience" class="block reveal">
          <div class="block-head">
             <span class="block-tag">SELECTED EXPERIENCE</span>
-            <span class="block-line"></span>
          </div>
 
          <ol class="timeline">
@@ -57,87 +56,95 @@
             <li class="timeline-item timeline-item--current">
                <span class="timeline-node"></span>
                <article class="card">
-                  <header class="card-head">
+                  <div class="card-left">
                      <span class="card-num">01</span>
-                     <span class="card-arrow">&rarr;</span>
-                  </header>
-                  <h3 class="card-title" data-scramble-on-view>Codexa</h3>
-                  <p class="card-role">AI Developer &middot; Full-time &middot; Remote</p>
-                  <p class="card-date">dec 2025 &mdash; present</p>
-                  <p class="card-desc">
-                     Building Python RESTful APIs for AI systems, focused on
-                     LLM-based agents. Service integration with LangChain and
-                     LangGraph, observability and model evaluation,
-                     delivering scalable production-ready solutions.
-                  </p>
-                  <ul class="tags">
-                     <li>Python</li><li>LangChain</li><li>LangGraph</li><li>REST API</li>
-                  </ul>
+                     <h3 class="card-title" data-scramble-on-view>Codexa</h3>
+                     <p class="card-role">AI Developer</p>
+                     <p class="card-meta">Full-time &middot; Remote</p>
+                     <p class="card-date">dec 2025 — present</p>
+                  </div>
+                  <div class="card-right">
+                     <p class="card-desc">
+                        Building Python RESTful APIs for AI systems, focused on
+                        LLM-based agents. Service integration with LangChain and
+                        LangGraph, observability and model evaluation,
+                        delivering scalable production-ready solutions.
+                     </p>
+                     <ul class="tags">
+                        <li>Python</li><li>LangChain</li><li>LangGraph</li><li>REST API</li>
+                     </ul>
+                  </div>
                </article>
             </li>
 
             <li class="timeline-item">
                <span class="timeline-node"></span>
                <article class="card">
-                  <header class="card-head">
+                  <div class="card-left">
                      <span class="card-num">02</span>
-                     <span class="card-arrow">&rarr;</span>
-                  </header>
-                  <h3 class="card-title" data-scramble-on-view>IPM Sistemas</h3>
-                  <p class="card-role">AI Developer &middot; Part-time &middot; On-site</p>
-                  <p class="card-date">jul 2024 &mdash; dec 2025 &middot; 1y 6m</p>
-                  <p class="card-desc">
-                     Machine learning work focused on NLP and image
-                     classification using TensorFlow, Keras and PyTorch.
-                     Web scraping for dataset creation, plus building and
-                     maintaining RESTful APIs for service integration.
-                  </p>
-                  <ul class="tags">
-                     <li>Python</li><li>TensorFlow</li><li>PyTorch</li><li>Elasticsearch</li>
-                  </ul>
+                     <h3 class="card-title" data-scramble-on-view>IPM Sistemas</h3>
+                     <p class="card-role">AI Developer</p>
+                     <p class="card-meta">Part-time &middot; On-site</p>
+                     <p class="card-date">jul 2024 — dec 2025 &middot; 1y 6m</p>
+                  </div>
+                  <div class="card-right">
+                     <p class="card-desc">
+                        Machine learning work focused on NLP and image
+                        classification using TensorFlow, Keras and PyTorch.
+                        Web scraping for dataset creation, plus building and
+                        maintaining RESTful APIs for service integration.
+                     </p>
+                     <ul class="tags">
+                        <li>Python</li><li>TensorFlow</li><li>PyTorch</li><li>Elasticsearch</li>
+                     </ul>
+                  </div>
                </article>
             </li>
 
             <li class="timeline-item">
                <span class="timeline-node"></span>
                <article class="card">
-                  <header class="card-head">
+                  <div class="card-left">
                      <span class="card-num">03</span>
-                     <span class="card-arrow">&rarr;</span>
-                  </header>
-                  <h3 class="card-title" data-scramble-on-view>Offer Technologies</h3>
-                  <p class="card-role">Backend Developer &middot; Internship &middot; Remote</p>
-                  <p class="card-date">jun 2023 &mdash; jun 2024 &middot; 1y 1m</p>
-                  <p class="card-desc">
-                     Backend systems with Python &mdash; APIs and web scraping
-                     using Pandas, BeautifulSoup and Selenium. Data
-                     manipulation, structured data integration via APIs
-                     and relational/non-relational databases like MySQL.
-                  </p>
-                  <ul class="tags">
-                     <li>Python</li><li>Pandas</li><li>Selenium</li><li>MySQL</li>
-                  </ul>
+                     <h3 class="card-title" data-scramble-on-view>Offer Technologies</h3>
+                     <p class="card-role">Backend Developer</p>
+                     <p class="card-meta">Internship &middot; Remote</p>
+                     <p class="card-date">jun 2023 — jun 2024 &middot; 1y 1m</p>
+                  </div>
+                  <div class="card-right">
+                     <p class="card-desc">
+                        Backend systems with Python. APIs and web scraping
+                        using Pandas, BeautifulSoup and Selenium. Data
+                        manipulation, structured data integration via APIs
+                        and relational/non-relational databases like MySQL.
+                     </p>
+                     <ul class="tags">
+                        <li>Python</li><li>Pandas</li><li>Selenium</li><li>MySQL</li>
+                     </ul>
+                  </div>
                </article>
             </li>
 
             <li class="timeline-item">
                <span class="timeline-node"></span>
                <article class="card">
-                  <header class="card-head">
+                  <div class="card-left">
                      <span class="card-num">04</span>
-                     <span class="card-arrow">&rarr;</span>
-                  </header>
-                  <h3 class="card-title" data-scramble-on-view>Instituto Federal Catarinense</h3>
-                  <p class="card-role">Dev &amp; Hardware Intern &middot; On-site</p>
-                  <p class="card-date">mar 2023 &mdash; may 2023 &middot; 3m</p>
-                  <p class="card-desc">
-                     Software development across multiple languages &mdash;
-                     web with PHP, Java/Python applications. Computer
-                     hardware maintenance for institute equipment.
-                  </p>
-                  <ul class="tags">
-                     <li>Python</li><li>Java</li><li>PHP</li><li>Hardware</li>
-                  </ul>
+                     <h3 class="card-title" data-scramble-on-view>Instituto Federal Catarinense</h3>
+                     <p class="card-role">Dev &amp; Hardware Intern</p>
+                     <p class="card-meta">On-site</p>
+                     <p class="card-date">mar 2023 — may 2023 &middot; 3m</p>
+                  </div>
+                  <div class="card-right">
+                     <p class="card-desc">
+                        Software development across multiple languages.
+                        Web with PHP, Java/Python applications. Computer
+                        hardware maintenance for institute equipment.
+                     </p>
+                     <ul class="tags">
+                        <li>Python</li><li>Java</li><li>PHP</li><li>Hardware</li>
+                     </ul>
+                  </div>
                </article>
             </li>
 
@@ -147,46 +154,41 @@
       <section id="stack" class="block reveal">
          <div class="block-head">
             <span class="block-tag">STACK</span>
-            <span class="block-line"></span>
          </div>
 
          <div class="stack-grid">
             <div class="stack-col">
-               <h4 data-scramble-on-view>./languages</h4>
-               <ul>
+               <h4 data-scramble-on-view>Languages</h4>
+               <ul class="stack-tags">
                   <li>Python</li>
                   <li>Java</li>
-                  <li>PHP</li>
                   <li>JavaScript</li>
                   <li>Rust</li>
                </ul>
             </div>
             <div class="stack-col">
-               <h4 data-scramble-on-view>./ai_ml</h4>
-               <ul>
+               <h4 data-scramble-on-view>AI / ML</h4>
+               <ul class="stack-tags">
                   <li>LangChain</li>
                   <li>LangGraph</li>
-                  <li>TensorFlow</li>
                   <li>PyTorch</li>
-                  <li>Keras</li>
+                  <li>TensorFlow</li>
                </ul>
             </div>
             <div class="stack-col">
-               <h4 data-scramble-on-view>./backend</h4>
-               <ul>
+               <h4 data-scramble-on-view>Backend</h4>
+               <ul class="stack-tags">
                   <li>Django</li>
-                  <li>DRF</li>
                   <li>FastAPI</li>
                   <li>REST APIs</li>
                   <li>Elasticsearch</li>
                </ul>
             </div>
             <div class="stack-col">
-               <h4 data-scramble-on-view>./data</h4>
-               <ul>
+               <h4 data-scramble-on-view>Data</h4>
+               <ul class="stack-tags">
                   <li>Pandas</li>
                   <li>NumPy</li>
-                  <li>BeautifulSoup</li>
                   <li>Selenium</li>
                   <li>MySQL</li>
                </ul>
@@ -197,12 +199,11 @@
       <section id="education" class="block reveal">
          <div class="block-head">
             <span class="block-tag">EDUCATION</span>
-            <span class="block-line"></span>
          </div>
          <div class="edu">
             <h3 data-scramble-on-view>Instituto Federal Catarinense</h3>
             <p class="edu-degree">Bachelor &middot; Computer Science</p>
-            <p class="edu-date">feb 2022 &mdash; dec 2025</p>
+            <p class="edu-date">feb 2022 - dec 2025</p>
             <ul class="tags">
                <li>Java</li><li>Python</li><li>PHP</li><li>Algorithms</li>
             </ul>
@@ -212,28 +213,32 @@
       <section id="contact" class="block reveal">
          <div class="block-head">
             <span class="block-tag">CONTACT</span>
-            <span class="block-line"></span>
          </div>
          <div class="contact">
-            <p class="prompt-line">
-               &gt; <span data-scramble-on-view>location</span> = <span class="str">"Brazil"</span>
-            </p>
-            <p class="prompt-line">
-               &gt; <span data-scramble-on-view>contact</span> = [
+            <p class="contact-intro" data-scramble-on-view>Let's build something together.</p>
+            <p class="contact-sub">
+               Based in Brazil, always happy to chat.
             </p>
             <div class="contact-list">
-               <a href="https://github.com/Augusto-Sant" target="_blank" rel="noopener">github.com/Augusto-Sant</a>
-               <a href="https://www.linkedin.com/in/jos%C3%A9-augusto-sant-ana-65a4041b8/" target="_blank" rel="noopener">linkedin/jose-augusto</a>
-               <a href="mailto:j.augusto.oliveira.sant@gmail.com">j.augusto.oliveira.sant@gmail.com</a>
+               <a href="mailto:j.augusto.oliveira.sant@gmail.com">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value">j.augusto.oliveira.sant@gmail.com</span>
+               </a>
+               <a href="https://github.com/Augusto-Sant" target="_blank" rel="noopener">
+                  <span class="contact-label">GitHub</span>
+                  <span class="contact-value">github.com/Augusto-Sant</span>
+               </a>
+               <a href="https://www.linkedin.com/in/jos%C3%A9-augusto-sant-ana-65a4041b8/" target="_blank" rel="noopener">
+                  <span class="contact-label">LinkedIn</span>
+                  <span class="contact-value">José Augusto Sant'Ana</span>
+               </a>
             </div>
-            <p class="prompt-line">&gt; ]</p>
          </div>
       </section>
 
    </main>
 
    <footer class="site-footer">
-      <p>&gt; always shipping, always learning.<span class="caret">&block;</span></p>
       <div class="socials">
          <a href="https://github.com/Augusto-Sant" target="_blank" rel="noopener" aria-label="GitHub">[gh]</a>
          <a href="https://www.linkedin.com/in/jos%C3%A9-augusto-sant-ana-65a4041b8/" target="_blank" rel="noopener" aria-label="LinkedIn">[in]</a>
