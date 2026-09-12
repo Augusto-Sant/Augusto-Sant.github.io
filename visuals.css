@@ -31,9 +31,9 @@ html { scroll-behavior: smooth; }
 body {
    background: var(--bg);
    color: var(--fg);
-   font-family: 'Iosevka Charon', ui-monospace, monospace;
+   font-family: 'JetBrains Mono', ui-monospace, monospace;
    font-weight: 400;
-   font-size: 32px;
+   font-size: 23px;
    line-height: 1.65;
    overflow-x: hidden;
    min-height: 100dvh;
@@ -45,18 +45,16 @@ body {
    position: fixed;
    inset: 0;
    margin: 0;
-   font-family: 'Iosevka Charon', ui-monospace, monospace;
+   font-family: 'JetBrains Mono', ui-monospace, monospace;
    font-size: 13px;
    line-height: 1.15;
    letter-spacing: 1px;
-   color: rgba(255, 255, 255, 0.045);
+   color: rgba(255, 255, 255, 0.32);
    white-space: pre;
    overflow: hidden;
    pointer-events: none;
    user-select: none;
    z-index: 0;
-   mask-image: radial-gradient(ellipse at center, #000 25%, transparent 78%);
-   -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 78%);
 }
 
 /* ---------- header ---------- */
@@ -80,7 +78,7 @@ body {
 .logo {
    color: var(--fg);
    text-decoration: none;
-   font-size: 16px;
+   font-size: 21px;
    letter-spacing: 0.5px;
 }
 
@@ -91,7 +89,7 @@ body {
 .nav-link {
    color: var(--fg-dim);
    text-decoration: none;
-   font-size: 15px;
+   font-size: 20px;
    letter-spacing: 0.5px;
    position: relative;
    padding-bottom: 6px;
@@ -138,42 +136,39 @@ main > section {
    display: flex;
    flex-direction: column;
    justify-content: center;
-   transition: opacity 0.55s ease, filter 0.55s ease;
+   transition: opacity 0.9s cubic-bezier(.4,0,.2,1), filter 0.9s cubic-bezier(.4,0,.2,1), transform 0.9s cubic-bezier(.4,0,.2,1);
+   will-change: opacity, filter;
 }
 /* dim every chapter except the one in focus */
 main > section.dimmed {
-   opacity: 0.1;
-   filter: blur(3px);
+   opacity: 0.08;
+   filter: blur(4px);
+   transform: scale(0.985);
    pointer-events: none;
 }
 
 /* ---------- hero ---------- */
 .hero {
-   display: grid;
-   grid-template-columns: 1.1fr 1fr;
-   gap: 60px;
+   display: flex;
+   flex-direction: column;
    align-items: center;
-   padding: 60px 0;
+   justify-content: center;
+   gap: 28px;
+   padding: 40px 0;
 }
-
-.hero-title {
-   font-family: 'Iosevka Charon', monospace;
-   font-weight: 500;
-   font-size: clamp(52px, 7vw, 92px);
-   line-height: 1.1;
-   letter-spacing: -0.02em;
-   margin-bottom: 36px;
-}
-.hero-line {
-   display: block;
-   min-height: 1.1em;
+.sr-only {
+   position: absolute;
+   width: 1px; height: 1px;
+   overflow: hidden;
+   clip: rect(0 0 0 0);
+   white-space: nowrap;
 }
 
 .cta {
    display: inline-block;
    color: var(--fg);
    text-decoration: none;
-   font-size: 16px;
+   font-size: 21px;
    border-bottom: 1px solid var(--fg);
    padding-bottom: 6px;
    transition: padding-right 0.25s, letter-spacing 0.25s;
@@ -183,41 +178,25 @@ main > section.dimmed {
    letter-spacing: 0.5px;
 }
 
-/* ---------- hero art (ascii) ---------- */
+/* ---------- hero art (ascii swarm) ---------- */
 .hero-art {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-.art-frame {
-   position: relative;
    width: 100%;
-   max-width: 560px;
-   aspect-ratio: 4 / 3;
-   padding: 40px;
    display: flex;
-   align-items: center;
    justify-content: center;
+   overflow: hidden;
 }
-.corner {
-   position: absolute;
-   width: 20px;
-   height: 20px;
-   border: 1px solid var(--line-2);
-}
-.corner.tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
-.corner.tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
-.corner.bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
-.corner.br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
-
 .ascii-art {
-   font-family: 'Iosevka Charon', monospace;
-   font-size: 7px;
+   /* JetBrains Mono ships the block elements (▀▄█) the art uses */
+   font-family: 'JetBrains Mono', 'DejaVu Sans Mono', ui-monospace, monospace;
+   /* 100 cols x 30 rows; size scales with viewport, never wraps */
+   font-size: clamp(6px, min(1.5vw, 2.4vh), 18px);
    line-height: 1;
-   color: var(--fg-dim);
+   color: var(--fg);
+   text-shadow: 0 0 10px rgba(255,255,255,0.14);
    white-space: pre;
    user-select: none;
-   text-align: center;
+   text-align: left;
+   margin: 0;
 }
 
 /* ---------- block ---------- */
@@ -232,7 +211,7 @@ main > section.dimmed {
 }
 .block-tag {
    color: var(--fg-faint);
-   font-size: 13px;
+   font-size: 17px;
    letter-spacing: 3px;
    text-transform: uppercase;
 }
@@ -293,10 +272,10 @@ main > section.dimmed {
 /* ---------- cards ---------- */
 .card {
    border: 1px solid var(--line);
-   border-radius: 4px;
+   border-radius: 2px;
    padding: 32px;
-   background: var(--bg-2);
-   transition: border-color 0.3s, transform 0.3s;
+   background: transparent;
+   transition: border-color 0.4s, background 0.4s;
    display: grid;
    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
    gap: 40px;
@@ -304,7 +283,7 @@ main > section.dimmed {
 }
 .card:hover {
    border-color: var(--line-2);
-   transform: translateY(-3px);
+   background: rgba(255,255,255,0.015);
 }
 
 .card-left {
@@ -313,12 +292,12 @@ main > section.dimmed {
 .card-num {
    display: block;
    color: var(--fg-faint);
-   font-size: 13px;
+   font-size: 17px;
    letter-spacing: 1px;
    margin-bottom: 14px;
 }
 .card-title {
-   font-size: clamp(26px, 2.4vw, 34px);
+   font-size: clamp(34px, 2.4vw, 44px);
    font-weight: 500;
    line-height: 1.15;
    margin-bottom: 14px;
@@ -326,17 +305,17 @@ main > section.dimmed {
 }
 .card-role {
    color: var(--fg);
-   font-size: 16px;
+   font-size: 21px;
    margin-bottom: 4px;
 }
 .card-meta {
    color: var(--fg-dim);
-   font-size: 14px;
+   font-size: 18px;
    margin-bottom: 4px;
 }
 .card-date {
    color: var(--fg-faint);
-   font-size: 14px;
+   font-size: 18px;
 }
 
 .card-right {
@@ -345,7 +324,7 @@ main > section.dimmed {
 }
 .card-desc {
    color: var(--fg-dim);
-   font-size: 18px;
+   font-size: 23px;
    line-height: 1.7;
    margin-bottom: 22px;
 }
@@ -357,7 +336,7 @@ main > section.dimmed {
    gap: 8px;
 }
 .tags li {
-   font-size: 13px;
+   font-size: 17px;
    padding: 5px 10px;
    border: 1px solid var(--line);
    border-radius: 3px;
@@ -372,9 +351,9 @@ main > section.dimmed {
 }
 .stack-col h4 {
    color: var(--fg-dim);
-   font-size: 45px;
+   font-size: 17px;
    font-weight: 500;
-   letter-spacing: 1.5px;
+   letter-spacing: 3px;
    text-transform: uppercase;
    margin-bottom: 18px;
 }
@@ -386,7 +365,7 @@ main > section.dimmed {
 }
 .stack-tags li {
    color: var(--fg-dim);
-   font-size: 15px;
+   font-size: 20px;
    padding: 6px 12px;
    border: 1px solid var(--line);
    border-radius: 3px;
@@ -400,23 +379,23 @@ main > section.dimmed {
 /* ---------- education ---------- */
 .edu {
    border: 1px solid var(--line);
-   border-radius: 4px;
+   border-radius: 2px;
    padding: 32px;
-   background: var(--bg-2);
+   background: transparent;
 }
 .edu h3 {
-   font-size: 27px;
+   font-size: 35px;
    font-weight: 500;
    margin-bottom: 8px;
 }
 .edu-degree {
    color: var(--fg);
    margin-bottom: 4px;
-   font-size: 16px;
+   font-size: 21px;
 }
 .edu-date {
    color: var(--fg-faint);
-   font-size: 14px;
+   font-size: 18px;
    margin-bottom: 18px;
 }
 
@@ -425,7 +404,7 @@ main > section.dimmed {
    max-width: 760px;
 }
 .contact-intro {
-   font-size: clamp(28px, 3.5vw, 44px);
+   font-size: clamp(36px, 3.5vw, 57px);
    font-weight: 500;
    line-height: 1.2;
    letter-spacing: -0.01em;
@@ -433,7 +412,7 @@ main > section.dimmed {
 }
 .contact-sub {
    color: var(--fg-dim);
-   font-size: 17px;
+   font-size: 22px;
    line-height: 1.6;
    margin-bottom: 40px;
 }
@@ -457,13 +436,13 @@ main > section.dimmed {
 .contact-label {
    flex: 0 0 100px;
    color: var(--fg-faint);
-   font-size: 13px;
+   font-size: 17px;
    letter-spacing: 1.5px;
    text-transform: uppercase;
 }
 .contact-value {
    color: var(--fg-dim);
-   font-size: 17px;
+   font-size: 22px;
    transition: color 0.2s;
    word-break: break-word;
    overflow-wrap: anywhere;
@@ -481,7 +460,7 @@ main > section.dimmed {
    justify-content: space-between;
    align-items: center;
    color: var(--fg-dim);
-   font-size: 15px;
+   font-size: 20px;
    position: relative;
    z-index: 1;
 }
@@ -498,28 +477,40 @@ main > section.dimmed {
    color: var(--fg);
 }
 
-/* ---------- reveal ---------- */
-.reveal {
+/* ---------- reveal (staggered children) ---------- */
+.reveal .block-head {
    opacity: 0;
-   transform: translateY(20px);
+   transform: translateY(10px);
    transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal.visible {
+.reveal .timeline-item,
+.reveal .stack-col,
+.reveal .edu,
+.reveal .contact > *,
+.reveal .contact-list a {
+   opacity: 0;
+   transform: translateY(18px);
+   filter: blur(4px);
+   transition:
+      opacity 0.8s cubic-bezier(.2,.7,.2,1),
+      transform 0.8s cubic-bezier(.2,.7,.2,1),
+      filter 0.8s cubic-bezier(.2,.7,.2,1);
+   transition-delay: calc(0.12s + var(--i, 0) * 0.09s);
+}
+.reveal.visible .block-head,
+.reveal.visible .timeline-item,
+.reveal.visible .stack-col,
+.reveal.visible .edu,
+.reveal.visible .contact > *,
+.reveal.visible .contact-list a {
    opacity: 1;
-   transform: translateY(0);
+   transform: none;
+   filter: none;
 }
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
-   .hero {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      min-height: auto;
-      padding: 40px 0 60px;
-   }
-   .hero-art { order: -1; }
-   .art-frame { max-width: 400px; aspect-ratio: 1; padding: 24px; }
-   .ascii-art { font-size: 6px; }
+   .hero { padding: 24px 0 48px; gap: 20px; }
 
    .nav { gap: 16px; }
    .nav-link { font-size: 11px; }
@@ -555,11 +546,6 @@ main > section.dimmed {
    .logo { font-size: 11px; }
 
    .hero { padding: 24px 0 48px; gap: 28px; }
-   .hero-title { margin-bottom: 24px; }
-
-   .art-frame { max-width: 320px; padding: 18px; }
-   .ascii-art { font-size: 5px; }
-   .corner { width: 18px; height: 18px; }
 
    .block { padding: 44px 0; }
    .block-head { gap: 14px; margin-bottom: 26px; }
@@ -590,7 +576,4 @@ main > section.dimmed {
 @media (max-width: 400px) {
    .nav { gap: 8px; }
    .nav-link { font-size: 9px; }
-   .art-frame { max-width: 280px; padding: 14px; }
-   .ascii-art { font-size: 4.5px; }
-   .hero-title { font-size: 36px; }
 }

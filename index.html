@@ -8,8 +8,8 @@
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
+   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="visuals.css">
    <script defer src="app.js"></script>
 </head>
@@ -29,21 +29,11 @@
    <main id="top">
 
       <section id="about" class="hero">
-         <div class="hero-text">
-            <h1 class="hero-title">
-               <span class="hero-line">I build AI agents.</span>
-            </h1>
-            <a href="#experience" class="cta">View my work &rarr;</a>
-         </div>
+         <h1 class="sr-only">I build agents.</h1>
          <div class="hero-art">
-            <div class="art-frame">
-               <span class="corner tl"></span>
-               <span class="corner tr"></span>
-               <span class="corner bl"></span>
-               <span class="corner br"></span>
-               <pre class="ascii-art" id="asciiArt"></pre>
-            </div>
+            <pre class="ascii-art" id="asciiArt" data-text="I build|agents." aria-hidden="true"></pre>
          </div>
+         <a href="#experience" class="cta">View my work &rarr;</a>
       </section>
 
       <section id="experience" class="block reveal">
@@ -203,7 +193,7 @@
          <div class="edu">
             <h3 data-scramble-on-view>Instituto Federal Catarinense</h3>
             <p class="edu-degree">Bachelor &middot; Computer Science</p>
-            <p class="edu-date">feb 2022 - dec 2025</p>
+            <p class="edu-date">feb 2022 - aug 2026</p>
             <ul class="tags">
                <li>Java</li><li>Python</li><li>PHP</li><li>Algorithms</li>
             </ul>
