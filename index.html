@@ -2,238 +2,189 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>jose_dev_ | Python · AI · Backend</title>
+   <title>José Augusto Sant'Ana | Python · AI · Backend</title>
+   <meta name="description" content="AI developer building LLM agents and Python backends. Based in Brazil.">
 
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="visuals.css">
-   <script defer src="app.js"></script>
+   <script defer src="dither.js"></script>
 </head>
 <body>
-   <pre class="ascii-bg" id="asciiBg" aria-hidden="true"></pre>
+   <canvas class="bg-dither" aria-hidden="true"
+      data-dither
+      data-src="assets/chapada-diamantina.jpg"
+      data-grid-size="2"
+      data-mode="bayer"
+      data-primary="#b9b9b5"
+      data-secondary="#f3f3f0"
+      data-threshold="0.1"
+      data-contrast="1.25"
+      data-brightness="0.1"
+      data-focus-x="0.5"
+      data-focus-y="0.5"></canvas>
 
    <header class="site-header">
-      <a href="#top" class="logo">&gt; jose_dev_<span class="caret">&block;</span></a>
-      <nav class="nav">
-         <a href="#about" class="nav-link active">01_about</a>
-         <a href="#experience" class="nav-link">02_experience</a>
-         <a href="#stack" class="nav-link">03_stack</a>
-         <a href="#contact" class="nav-link">04_contact</a>
+      <a href="#top" class="logo">jose_dev<span class="caret" aria-hidden="true">▌</span></a>
+      <nav class="nav" aria-label="Sections">
+         <a href="#experience">experience</a>
+         <a href="#stack">stack</a>
+         <a href="#education">education</a>
+         <a href="#contact">contact</a>
       </nav>
    </header>
 
    <main id="top">
 
-      <section id="about" class="hero">
-         <h1 class="sr-only">I build agents.</h1>
-         <div class="hero-art">
-            <pre class="ascii-art" id="asciiArt" data-text="I build|agents." aria-hidden="true"></pre>
+      <section class="hero">
+         <div class="frame hero-frame">
+            <p class="prompt"><span class="dim">$</span> whoami</p>
+            <h1>I build agents.</h1>
+            <p class="lede">
+               José Augusto Sant'Ana. AI developer in Brazil, writing Python
+               backends and LLM agents with LangChain and LangGraph.
+            </p>
+            <div class="hero-actions">
+               <a href="#experience" class="btn">View work</a>
+               <a href="#contact" class="link">Get in touch &rarr;</a>
+            </div>
          </div>
-         <a href="#experience" class="cta">View my work &rarr;</a>
       </section>
 
-      <section id="experience" class="block reveal">
-         <div class="block-head">
-            <span class="block-tag">SELECTED EXPERIENCE</span>
-         </div>
+      <section id="experience" class="frame">
+         <h2 class="section-title"><span class="dim">01</span> Experience</h2>
 
          <ol class="timeline">
-
-            <li class="timeline-item timeline-item--current">
-               <span class="timeline-node"></span>
-               <article class="card">
-                  <div class="card-left">
-                     <span class="card-num">01</span>
-                     <h3 class="card-title" data-scramble-on-view>Codexa</h3>
-                     <p class="card-role">AI Developer</p>
-                     <p class="card-meta">Full-time &middot; Remote</p>
-                     <p class="card-date">dec 2025 — present</p>
-                  </div>
-                  <div class="card-right">
-                     <p class="card-desc">
-                        Building Python RESTful APIs for AI systems, focused on
-                        LLM-based agents. Service integration with LangChain and
-                        LangGraph, observability and model evaluation,
-                        delivering scalable production-ready solutions.
-                     </p>
-                     <ul class="tags">
-                        <li>Python</li><li>LangChain</li><li>LangGraph</li><li>REST API</li>
-                     </ul>
-                  </div>
-               </article>
+            <li class="tl-item is-current">
+               <p class="tl-when">
+                  <span>dec 2025</span>
+                  <span>present</span>
+               </p>
+               <div class="tl-body">
+                  <h3>Codexa <span class="tl-now">now</span></h3>
+                  <p class="tl-meta">AI Developer · Full-time · Remote</p>
+                  <ul class="tl-points">
+                     <li>Build foreign-trade solutions with LLMs that support and automate decision-making</li>
+                     <li>Build autonomous agents that run in the background and orchestrate multi-step flows with LangChain and LangGraph</li>
+                     <li>Develop conversational chatbots integrated with many systems and external tools</li>
+                     <li>Work full stack, from front-end to back-end, plus microservices and RESTful APIs in Python</li>
+                     <li>Design scalable solutions focused on non-functional requirements, observability and model evaluation</li>
+                  </ul>
+               </div>
             </li>
 
-            <li class="timeline-item">
-               <span class="timeline-node"></span>
-               <article class="card">
-                  <div class="card-left">
-                     <span class="card-num">02</span>
-                     <h3 class="card-title" data-scramble-on-view>IPM Sistemas</h3>
-                     <p class="card-role">AI Developer</p>
-                     <p class="card-meta">Part-time &middot; On-site</p>
-                     <p class="card-date">jul 2024 — dec 2025 &middot; 1y 6m</p>
-                  </div>
-                  <div class="card-right">
-                     <p class="card-desc">
-                        Machine learning work focused on NLP and image
-                        classification using TensorFlow, Keras and PyTorch.
-                        Web scraping for dataset creation, plus building and
-                        maintaining RESTful APIs for service integration.
-                     </p>
-                     <ul class="tags">
-                        <li>Python</li><li>TensorFlow</li><li>PyTorch</li><li>Elasticsearch</li>
-                     </ul>
-                  </div>
-               </article>
+            <li class="tl-item">
+               <p class="tl-when">
+                  <span>jul 2024</span>
+                  <span>dec 2025</span>
+                  <span class="tl-dur">1 yr 6 mos</span>
+               </p>
+               <div class="tl-body">
+                  <h3>IPM Sistemas</h3>
+                  <p class="tl-meta">AI Developer · Part-time · Rio do Sul, SC · On-site</p>
+                  <ul class="tl-points">
+                     <li>Integrated a facial recognition and tracking system for the public sector, identifying people in physical spaces with DeepFace and vector search over embeddings in Elasticsearch</li>
+                     <li>Built solutions with RAG and local LLMs to solve real public-sector problems</li>
+                     <li>Trained NLP and image classification models with TensorFlow, Keras and PyTorch</li>
+                     <li>Served the models as microservices with load balancing and a scalable architecture</li>
+                     <li>Did data mining and web scraping to build datasets, including property value analysis by region</li>
+                  </ul>
+               </div>
             </li>
 
-            <li class="timeline-item">
-               <span class="timeline-node"></span>
-               <article class="card">
-                  <div class="card-left">
-                     <span class="card-num">03</span>
-                     <h3 class="card-title" data-scramble-on-view>Offer Technologies</h3>
-                     <p class="card-role">Backend Developer</p>
-                     <p class="card-meta">Internship &middot; Remote</p>
-                     <p class="card-date">jun 2023 — jun 2024 &middot; 1y 1m</p>
-                  </div>
-                  <div class="card-right">
-                     <p class="card-desc">
-                        Backend systems with Python. APIs and web scraping
-                        using Pandas, BeautifulSoup and Selenium. Data
-                        manipulation, structured data integration via APIs
-                        and relational/non-relational databases like MySQL.
-                     </p>
-                     <ul class="tags">
-                        <li>Python</li><li>Pandas</li><li>Selenium</li><li>MySQL</li>
-                     </ul>
-                  </div>
-               </article>
+            <li class="tl-item">
+               <p class="tl-when">
+                  <span>jun 2023</span>
+                  <span>jun 2024</span>
+                  <span class="tl-dur">1 yr 1 mo</span>
+               </p>
+               <div class="tl-body">
+                  <h3>Offer Technologies</h3>
+                  <p class="tl-meta">Backend Developer · Internship · Remote</p>
+                  <ul class="tl-points">
+                     <li>Trained AI models to automatically detect counterfeit products</li>
+                     <li>Labeled data with Label Studio to build training datasets</li>
+                     <li>Automated web data mining with Python, Beautiful Soup and Selenium</li>
+                     <li>Cleaned and integrated data with Pandas, APIs and databases (MySQL, Elasticsearch)</li>
+                  </ul>
+               </div>
             </li>
 
-            <li class="timeline-item">
-               <span class="timeline-node"></span>
-               <article class="card">
-                  <div class="card-left">
-                     <span class="card-num">04</span>
-                     <h3 class="card-title" data-scramble-on-view>Instituto Federal Catarinense</h3>
-                     <p class="card-role">Dev &amp; Hardware Intern</p>
-                     <p class="card-meta">On-site</p>
-                     <p class="card-date">mar 2023 — may 2023 &middot; 3m</p>
-                  </div>
-                  <div class="card-right">
-                     <p class="card-desc">
-                        Software development across multiple languages.
-                        Web with PHP, Java/Python applications. Computer
-                        hardware maintenance for institute equipment.
-                     </p>
-                     <ul class="tags">
-                        <li>Python</li><li>Java</li><li>PHP</li><li>Hardware</li>
-                     </ul>
-                  </div>
-               </article>
+            <li class="tl-item">
+               <p class="tl-when">
+                  <span>mar 2023</span>
+                  <span>may 2023</span>
+                  <span class="tl-dur">3 mos</span>
+               </p>
+               <div class="tl-body">
+                  <h3>Instituto Federal Catarinense</h3>
+                  <p class="tl-meta">Software Dev &amp; Hardware Maintenance Intern · Rio do Sul, SC · On-site</p>
+                  <ul class="tl-points">
+                     <li>Built the official website of the institute's math competition from scratch</li>
+                     <li>Maintained the campus computers and hardware infrastructure</li>
+                  </ul>
+               </div>
             </li>
-
          </ol>
       </section>
 
-      <section id="stack" class="block reveal">
-         <div class="block-head">
-            <span class="block-tag">STACK</span>
-         </div>
-
-         <div class="stack-grid">
-            <div class="stack-col">
-               <h4 data-scramble-on-view>Languages</h4>
-               <ul class="stack-tags">
-                  <li>Python</li>
-                  <li>Java</li>
-                  <li>JavaScript</li>
-                  <li>Rust</li>
-               </ul>
-            </div>
-            <div class="stack-col">
-               <h4 data-scramble-on-view>AI / ML</h4>
-               <ul class="stack-tags">
-                  <li>LangChain</li>
-                  <li>LangGraph</li>
-                  <li>PyTorch</li>
-                  <li>TensorFlow</li>
-               </ul>
-            </div>
-            <div class="stack-col">
-               <h4 data-scramble-on-view>Backend</h4>
-               <ul class="stack-tags">
-                  <li>Django</li>
-                  <li>FastAPI</li>
-                  <li>REST APIs</li>
-                  <li>Elasticsearch</li>
-               </ul>
-            </div>
-            <div class="stack-col">
-               <h4 data-scramble-on-view>Data</h4>
-               <ul class="stack-tags">
-                  <li>Pandas</li>
-                  <li>NumPy</li>
-                  <li>Selenium</li>
-                  <li>MySQL</li>
-               </ul>
-            </div>
-         </div>
+      <section id="stack" class="frame">
+         <h2 class="section-title"><span class="dim">02</span> Stack</h2>
+         <dl class="stack">
+            <div><dt>Languages</dt><dd>Python, Java, JavaScript, Rust</dd></div>
+            <div><dt>AI / ML</dt><dd>LangChain, LangGraph, PyTorch, TensorFlow</dd></div>
+            <div><dt>Backend</dt><dd>Django, FastAPI, REST APIs, Elasticsearch</dd></div>
+            <div><dt>Data</dt><dd>Pandas, NumPy, Selenium, MySQL</dd></div>
+         </dl>
       </section>
 
-      <section id="education" class="block reveal">
-         <div class="block-head">
-            <span class="block-tag">EDUCATION</span>
-         </div>
-         <div class="edu">
-            <h3 data-scramble-on-view>Instituto Federal Catarinense</h3>
-            <p class="edu-degree">Bachelor &middot; Computer Science</p>
-            <p class="edu-date">feb 2022 - aug 2026</p>
-            <ul class="tags">
-               <li>Java</li><li>Python</li><li>PHP</li><li>Algorithms</li>
-            </ul>
-         </div>
+      <section id="education" class="frame">
+         <h2 class="section-title"><span class="dim">03</span> Education</h2>
+         <ol class="timeline">
+            <li class="tl-item">
+               <p class="tl-when">
+                  <span>feb 2022</span>
+                  <span>aug 2026</span>
+               </p>
+               <div class="tl-body">
+                  <h3>Instituto Federal Catarinense</h3>
+                  <p class="tl-meta">Bachelor · Computer Science</p>
+               </div>
+            </li>
+         </ol>
       </section>
 
-      <section id="contact" class="block reveal">
-         <div class="block-head">
-            <span class="block-tag">CONTACT</span>
-         </div>
-         <div class="contact">
-            <p class="contact-intro" data-scramble-on-view>Let's build something together.</p>
-            <p class="contact-sub">
-               Based in Brazil, always happy to chat.
-            </p>
-            <div class="contact-list">
-               <a href="mailto:j.augusto.oliveira.sant@gmail.com">
-                  <span class="contact-label">Email</span>
-                  <span class="contact-value">j.augusto.oliveira.sant@gmail.com</span>
-               </a>
-               <a href="https://github.com/Augusto-Sant" target="_blank" rel="noopener">
-                  <span class="contact-label">GitHub</span>
-                  <span class="contact-value">github.com/Augusto-Sant</span>
-               </a>
-               <a href="https://www.linkedin.com/in/jos%C3%A9-augusto-sant-ana-65a4041b8/" target="_blank" rel="noopener">
-                  <span class="contact-label">LinkedIn</span>
-                  <span class="contact-value">José Augusto Sant'Ana</span>
-               </a>
-            </div>
-         </div>
+      <section id="contact" class="frame">
+         <h2 class="section-title"><span class="dim">04</span> Contact</h2>
+         <p class="contact-intro">Let's build something together.</p>
+         <p class="lede">Based in Brazil, always happy to chat.</p>
+         <ul class="contact">
+            <li>
+               <span class="contact-label">email</span>
+               <a href="mailto:j.augusto.oliveira.sant@gmail.com">j.augusto.oliveira.sant@gmail.com</a>
+            </li>
+            <li>
+               <span class="contact-label">github</span>
+               <a href="https://github.com/Augusto-Sant" target="_blank" rel="noopener">github.com/Augusto-Sant</a>
+            </li>
+            <li>
+               <span class="contact-label">linkedin</span>
+               <a href="https://www.linkedin.com/in/jos%C3%A9-augusto-sant-ana-65a4041b8/" target="_blank" rel="noopener">José Augusto Sant'Ana</a>
+            </li>
+         </ul>
       </section>
 
    </main>
 
-   <footer class="site-footer">
-      <div class="socials">
-         <a href="https://github.com/Augusto-Sant" target="_blank" rel="noopener" aria-label="GitHub">[gh]</a>
-         <a href="https://www.linkedin.com/in/jos%C3%A9-augusto-sant-ana-65a4041b8/" target="_blank" rel="noopener" aria-label="LinkedIn">[in]</a>
-         <a href="mailto:j.augusto.oliveira.sant@gmail.com" aria-label="Email">[@]</a>
-      </div>
+   <footer class="statusbar">
+      <nav class="statusbar-links" aria-label="Social">
+         <a href="https://github.com/Augusto-Sant" target="_blank" rel="noopener">[0:github]</a>
+         <a href="https://www.linkedin.com/in/jos%C3%A9-augusto-sant-ana-65a4041b8/" target="_blank" rel="noopener">[1:linkedin]</a>
+         <a href="mailto:j.augusto.oliveira.sant@gmail.com">[2:email]</a>
+      </nav>
+      <p class="statusbar-credit">bg: Morro do Pai Inácio, Chapada Diamantina · photo <a href="https://commons.wikimedia.org/wiki/File:PNM_do_Morro_do_Pai_In%C3%A1cio_-_Rodolfo_Bazetto(001).jpg" target="_blank" rel="noopener">Rodolfo Bazetto</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, dithered</p>
    </footer>
 </body>
 </html>
