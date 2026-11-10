@@ -9,8 +9,8 @@
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="visuals.css">
-   <script defer src="dither.js"></script>
+   <link rel="stylesheet" href="visuals.css?v=4">
+   <script defer src="dither.js?v=4"></script>
 </head>
 <body>
    <canvas class="bg-dither" aria-hidden="true"
@@ -136,26 +136,84 @@
          <h2 class="section-title"><span class="dim">02</span> Projects</h2>
          <ul class="projects">
             <li>
-               <a class="project" href="#">
-                  <div class="project-thumb">
-                     <img src="assets/projects/placeholder.jpg" alt="Project one screenshot" loading="lazy">
-                     <canvas data-thumb aria-hidden="true"></canvas>
-                  </div>
-                  <h3>Project one <span class="project-arrow" aria-hidden="true">&nearr;</span></h3>
-                  <p>Short one-line description of what this project does.</p>
-               </a>
+               <button class="project" type="button" data-dialog="project-restaurant" aria-haspopup="dialog">
+                  <span class="project-thumb">
+                     <img src="assets/projects/cantina-da-nona.png" alt="Restaurant Assistant chat where a customer orders a lasagna and the agent replies with the dish card" loading="lazy">
+                  </span>
+                  <span class="project-title">Restaurant Assistant <span class="project-arrow" aria-hidden="true">+</span></span>
+                  <span class="project-desc">An ordering assistant with inventory for restaurants.</span>
+               </button>
             </li>
             <li>
-               <a class="project" href="#">
-                  <div class="project-thumb">
-                     <img src="assets/projects/placeholder.jpg" alt="Project two screenshot" loading="lazy">
-                     <canvas data-thumb aria-hidden="true"></canvas>
-                  </div>
-                  <h3>Project two <span class="project-arrow" aria-hidden="true">&nearr;</span></h3>
-                  <p>Short one-line description of what this project does.</p>
-               </a>
+               <button class="project" type="button" data-dialog="project-scraper" aria-haspopup="dialog">
+                  <span class="project-thumb">
+                     <img src="assets/projects/scraper-agent.png" alt="Scraper Agent dashboard with a chat creating a scraper and its columns" loading="lazy">
+                  </span>
+                  <span class="project-title">Scraper Agent <span class="project-arrow" aria-hidden="true">+</span></span>
+                  <span class="project-desc">A chat agent that builds and schedules web scrapers, extracting structured data with an LLM.</span>
+               </button>
             </li>
          </ul>
+
+         <dialog class="project-dialog" id="project-restaurant" aria-labelledby="project-restaurant-title">
+            <header class="pd-head">
+               <h3 class="pd-title" id="project-restaurant-title"><span class="dim">01</span> Restaurant Assistant</h3>
+               <button class="pd-close" type="button" data-close>close <span aria-hidden="true">&times;</span></button>
+            </header>
+            <div class="pd-body">
+               <div class="pd-media">
+                  <img src="assets/projects/cantina-da-nona.png" alt="Restaurant Assistant chat where a customer orders a lasagna and the agent replies with the dish card" loading="lazy">
+               </div>
+               <div class="pd-text">
+                  <section>
+                     <h4 class="pd-label"><span class="dim">$</span> how i built it</h4>
+                     <p>Customers order by chatting with an agent, and every confirmed order deducts its ingredients from stock. Managers run that stock from a dashboard or by asking the assistant, which waits for approval before it changes anything.</p>
+                  </section>
+                  <section>
+                     <h4 class="pd-label"><span class="dim">$</span> stack</h4>
+                     <ul class="pd-tags"><li>Python</li><li>FastAPI</li><li>LangGraph</li><li>Postgres</li><li>Langfuse</li><li>React</li><li>Tailwind</li><li>Three.js</li></ul>
+                  </section>
+                  <section>
+                     <h4 class="pd-label"><span class="dim">$</span> what i learned</h4>
+                     <ul class="pd-list">
+                        <li><span class="pd-key">system design</span> A modular monolith with ports and adapters. Each module exposes one small public facade, so the agent never reaches into the domain.</li>
+                        <li><span class="pd-key">agent harness</span> The harness matters more than the prompt: narrow tools, approval gates on risky actions, and traces scored by user feedback.</li>
+                        <li><span class="pd-key">product</span> Chat alone is poor UI. Dish cards, an order timeline and visible tool use are what make the agent easy to trust.</li>
+                     </ul>
+                  </section>
+               </div>
+            </div>
+         </dialog>
+
+         <dialog class="project-dialog" id="project-scraper" aria-labelledby="project-scraper-title">
+            <header class="pd-head">
+               <h3 class="pd-title" id="project-scraper-title"><span class="dim">02</span> Scraper Agent</h3>
+               <button class="pd-close" type="button" data-close>close <span aria-hidden="true">&times;</span></button>
+            </header>
+            <div class="pd-body">
+               <div class="pd-media">
+                  <img src="assets/projects/scraper-agent.png" alt="Scraper Agent dashboard with a chat creating a scraper and its columns" loading="lazy">
+               </div>
+               <div class="pd-text">
+                  <section>
+                     <h4 class="pd-label"><span class="dim">$</span> how i built it</h4>
+                     <p>You describe the data you want in chat and the agent creates the scraper, defines its columns and schedules it. Playwright loads the page and an LLM extracts the rows into that schema.</p>
+                  </section>
+                  <section>
+                     <h4 class="pd-label"><span class="dim">$</span> stack</h4>
+                     <ul class="pd-tags"><li>Python</li><li>FastAPI</li><li>LangGraph</li><li>Playwright</li><li>APScheduler</li><li>SQLAlchemy</li><li>Postgres</li><li>Langfuse</li><li>React</li></ul>
+                  </section>
+                  <section>
+                     <h4 class="pd-label"><span class="dim">$</span> what i learned</h4>
+                     <ul class="pd-list">
+                        <li><span class="pd-key">system design</span> Scraping and chat are separate bounded contexts. Long runs go to background jobs and a scheduler, so the chat never blocks.</li>
+                        <li><span class="pd-key">agent harness</span> The agent gets the same use cases as the API, exposed as tools. Typed schemas keep LLM extraction checkable.</li>
+                        <li><span class="pd-key">product</span> A dashboard beside the chat shows what the agent actually did. Live run status beats a spinner.</li>
+                     </ul>
+                  </section>
+               </div>
+            </div>
+         </dialog>
       </section>
 
       <section id="stack" class="frame">
